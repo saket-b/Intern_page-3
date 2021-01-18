@@ -1,0 +1,64 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void findunion_inters(int arr1[],int arr2[],int n,int m)
+{
+    vector<int>union_arr;
+    vector<int>inters_arr;
+    
+    int i=0,j=0;
+    while(i<n &&j<m)
+    {
+        if(arr1[i]==arr2[j])
+        {
+            union_arr.push_back(arr1[i]);
+            inters_arr.push_back(arr1[i]);
+            i++;j++;
+        }
+        else if(arr1[i]<arr2[j])
+        {
+            union_arr.push_back(arr1[i]);
+            i++;
+        }
+        else 
+        {
+            union_arr.push_back(arr2[j]);
+            j++;
+        }
+    }
+    for(;i<n;i++)
+     union_arr.push_back(arr1[i]);
+     for(;j<m;j++)
+     union_arr.push_back(arr2[j]);
+     
+     cout<<"union=";
+     for(int i=0;i<union_arr.size();i++)
+      cout<<union_arr[i]<<" ";
+      cout<<endl;
+      
+      cout<<"Intersection=";
+      for(int i=0;i<inters_arr.size();i++)
+        cout<<inters_arr[i]<<" ";
+        
+    
+}
+
+int main() {
+
+  int n,m;
+   cin>>n>>m;
+   
+   int a1[n],a2[m];
+   for(int i=0;i<n;i++)
+   {
+       cin>>a1[i];
+   }
+   for(int i=0;i<m;i++)
+   {
+       cin>>a2[i];
+   }
+   
+   findunion_inters(a1,a2,n,m);
+
+	return 0;
+}
